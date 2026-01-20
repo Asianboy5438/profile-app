@@ -2,8 +2,10 @@ const NavBar = () => {
     return(
         <nav>
             <ul>
-                <li></li>
+                <li>Home</li>
             </ul>
         </nav>
     );
 };
+
+export default NavBar;
