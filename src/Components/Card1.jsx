@@ -1,4 +1,8 @@
 import man from "../assets/me.jpg";
+import "../styles/Card1.css";
+
+//const Card = ({name, title, iamge}) => {
+//Remove other consts and replace first line with above
 
 const Card1 = () => {
     const name = "Oscar Lieu";
@@ -6,9 +10,13 @@ const Card1 = () => {
 
     return (
         <div className ="profile-card">
-            <img src={man} alt="{name}"/>
-            <p>{name}</p>
-            <p>{title}</p>
+            <div className="top">
+                <img src={man} alt="{name}"/>
+            </div>
+            <div className="bottom">
+                <p>{name}</p>
+                <p>{title}</p>
+            </div>
         </div>
     ); 
 }
