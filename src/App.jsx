@@ -23,7 +23,7 @@ const profiles= [
       <Wrapper id="profile">
           <div className="grid">
             {profiles.map(profile => (
-              <Cards
+              <Card1
                 key={profile.id}
                 name={profile.name}
                 title={profile.title}
