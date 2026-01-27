@@ -1,4 +1,5 @@
 import artist from "../assets/VG0.jpg";
+import "../styles/Card2.css";
 
 const Card2 = () => {
     const name = "Van Gogh";

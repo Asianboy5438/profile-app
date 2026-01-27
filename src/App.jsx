@@ -4,14 +4,15 @@ import NavBar from './Components/NavBar'
 import AboutMe from './Components/AboutMe'
 import Wrapper from './Components/Wrapper'
 import './App.css'
-//import Me from './assets/me.jpg'
+import Me from './assets/me.jpg'
+import VG0 from './assets/VG0.jpg'
 
 function App() {
 
-//const profiles= [
-//  {id: 0, name:"Oscar", title: "UX Designer", image:me}
-//  {id: 1, name:"Van Gogh", title: "Painter", image:VG0}
-// ]
+const profiles= [
+  {id: 0, name:"Oscar", title: "UX Designer", image:Me},
+  {id: 1, name:"Van Gogh", title: "Painter", image:VG0}
+ ];
 
   return (
     <>
@@ -21,16 +22,18 @@ function App() {
       </Wrapper>
       <Wrapper id="profile">
           <div className="grid">
-            <Card1 />
-            <Card2 />
+            {profiles.map(profile => (
+              <Cards
+                key={profile.id}
+                name={profile.name}
+                title={profile.title}
+                image={profile.image}
+              />
+            ))}
           </div>
       </Wrapper>
     </>
   )
 }
-
-//{profiles.map(profile => (
-//  <Card key={profile.id} name={profile.name} title={profile.title} image={profile.image} />
-//))}
 
 export default App
