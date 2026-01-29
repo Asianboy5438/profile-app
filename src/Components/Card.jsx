@@ -1,4 +1,4 @@
-import "../styles/Card1.css";
+import "../styles/Card.css";
 
 const Card = ({name, title, image}) => {
     return (
@@ -14,4 +14,4 @@ const Card = ({name, title, image}) => {
     ); 
 }
 
-export default Card1;
+export default Card;
