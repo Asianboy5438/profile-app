@@ -1,4 +1,4 @@
-import "../styles/filter.css"
+import "../styles/Filters.css"
 
 const Filters = ({titles, title, name, handleChange, handleSearch, handleClick}) => {
     return (
