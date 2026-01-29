@@ -1,5 +1,4 @@
-import Card1 from './Components/Card1'
-import Card2 from './Components/Card2'
+import Card from './Components/Card'
 import NavBar from './Components/NavBar'
 import AboutMe from './Components/AboutMe'
 import Wrapper from './Components/Wrapper'
@@ -23,7 +22,7 @@ const profiles= [
       <Wrapper id="profile">
           <div className="grid">
             {profiles.map(profile => (
-              <Card1
+              <Card
                 key={profile.id}
                 name={profile.name}
                 title={profile.title}
