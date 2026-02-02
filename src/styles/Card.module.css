@@ -1,0 +1,18 @@
+.profileCard {
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.top {
+    text-align: center;
+}
+
+.bottom {
+    text-align: center;
+}
+
+.darkCard {
+    background-color: #1e1e1e;
+    color: white;
+}

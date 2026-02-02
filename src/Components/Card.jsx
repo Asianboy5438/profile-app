@@ -1,12 +1,12 @@
-import "../styles/Card.css";
+import styles from "../styles/Card.module.css";
 
-const Card = ({name, title, image}) => {
+const Card = ({name, title, image, mode}) => {
     return (
-        <div className ="profile-card">
-            <div className="top">
-                <img src={image} alt="{name}"/>
+        <div className ={`${styles.profileCard} ${mode === "dark" ? styles.darkCard : ""}`}>
+            <div className={styles.top}>
+                <img src={image} alt={name}/>
             </div>
-            <div className="bottom">
+            <div className={styles.bottom}>
                 <p>{name}</p>
                 <p>{title}</p>
             </div>

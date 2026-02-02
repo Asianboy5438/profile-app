@@ -45,45 +45,50 @@ const filteredProfiles = profiles.filter(
     (profile.title === title || !title) &&profile.name.toLowerCase().includes(name.toLowerCase()),
 );
 
-const [styles, setStyles] = useState ("light-mode");
+const [mode, setMode] = useState ("light");
 const toggleStyles = () => {
-  setStyles(styles === "light-mode" ? "dark-mode" : "light-mode")
+  setMode(mode === "light" ? "dark" : "light")
 }
-
 
   return (
     <>
-      <NavBar />
-      <Wrapper id="about">
-        <AboutMe />
-        <button onClick={handleClick}>
-          {clicked ? "Clicked" : "Click me"}
-        </button>
-      </Wrapper>
-      <Wrapper id="profile">
-        <Filters
-          titles={titles}
-          title={title}
-          name={name}
-          handleChange={handleChangeTitle}
-          handleSearch={handleSearch}
-          handleClick={handleClear}
-        />
-          <div className="grid">
-            {filteredProfiles.length > 0 ? (
-              filteredProfiles.map((profile) => (
-                <Card
-                  key={profile.id}
-                  name={profile.name}
-                  title={profile.title}
-                  image={profile.image}
-                />
-              ))
-            ) : (
-              <p>No profiles selected.</p>
-            )}
-          </div>
-      </Wrapper>
+      <div className={mode}>
+        <NavBar />
+        <Wrapper id="about">
+          <button onClick={toggleStyles}>
+              Switch to {mode === "light" ? "Dark" : "Light"} Mode
+          </button>
+          <AboutMe />
+          <button onClick={handleClick}>
+            {clicked ? "Clicked" : "Click me"}
+          </button>
+        </Wrapper>
+        <Wrapper id="profile">
+          <Filters
+            titles={titles}
+            title={title}
+            name={name}
+            handleChange={handleChangeTitle}
+            handleSearch={handleSearch}
+            handleClick={handleClear}
+          />
+            <div className="grid">
+              {filteredProfiles.length > 0 ? (
+                filteredProfiles.map((profile) => (
+                  <Card
+                    key={profile.id}
+                    name={profile.name}
+                    title={profile.title}
+                    image={profile.image}
+                    mode = {mode}
+                  />
+                ))
+              ) : (
+                <p>No profiles selected.</p>
+              )}
+            </div>
+        </Wrapper>
+      </div>
     </>
   )
 }
