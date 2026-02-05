@@ -9,15 +9,17 @@ import MA0 from './assets/MA0.jpg'
 import DV0 from './assets/DV0.jpg'
 import { use, useState } from "react";
 import Filters from './Components/Filters';
+import AddProfileForm from './Components/AddProfileForm'
 
 function App() {
 
-const profiles= [
-  {id: 0, name:"Oscar", title: "UX Designer", image: Me},
-  {id: 1, name:"Van Gogh", title: "Web Designer", image: VG0},
-  {id: 2, name: "Michelangelo", title: "Software Engineer", image: MA0},
-  {id: 3, name: "Da Vinci", title: "Full Stack Developer", image: DV0}
- ];
+const [profiles, setProfiles] = useState([
+  {id: 0, name:"Oscar", title: "UX Designer", email:"", bio:"", image: Me},
+  {id: 1, name:"Van Gogh", title: "Web Designer", email:"", bio:"", image: VG0},
+  {id: 2, name: "Michelangelo", title: "Software Engineer", email:"", bio:"", image: MA0},
+  {id: 3, name: "Da Vinci", title: "Full Stack Developer", email:"", bio:"", image: DV0}
+ ]);
+
 const titles = [...new Set(profiles.map((profile) => profile.title))];
 const [clicked,setClicked] = useState(false);
 const handleClick = () => {
@@ -39,7 +41,9 @@ const handleClear = () => {
   setTitle("");
   setName("");
 }
-
+const updateProfiles = (profile) => {
+  setProfiles(pre => ([...pre, profile]))
+}
 const filteredProfiles = profiles.filter(
   (profile) =>
     (profile.title === title || !title) &&profile.name.toLowerCase().includes(name.toLowerCase()),
@@ -62,6 +66,9 @@ const toggleStyles = () => {
           <button onClick={handleClick}>
             {clicked ? "Clicked" : "Click me"}
           </button>
+        </Wrapper>
+        <Wrapper id="add-profile">
+          <AddProfileForm onAddProfile={updateProfiles}/>
         </Wrapper>
         <Wrapper id="profile">
           <Filters
