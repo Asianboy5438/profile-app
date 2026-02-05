@@ -7,9 +7,10 @@ import Me from './assets/me.jpg'
 import VG0 from './assets/VG0.jpg'
 import MA0 from './assets/MA0.jpg'
 import DV0 from './assets/DV0.jpg'
-import { use, useState } from "react";
+import { useState } from "react";
 import Filters from './Components/Filters';
 import AddProfileForm from './Components/AddProfileForm'
+import FetchedProfiles from './Components/FetchedProfiles'
 
 function App() {
 
@@ -66,6 +67,9 @@ const toggleStyles = () => {
           <button onClick={handleClick}>
             {clicked ? "Clicked" : "Click me"}
           </button>
+        </Wrapper>
+        <Wrapper>
+          <FetchedProfiles />
         </Wrapper>
         <Wrapper id="add-profile">
           <AddProfileForm onAddProfile={updateProfiles}/>

@@ -67,7 +67,7 @@ const AddProfileForm = ({onAddProfile}) => {
     || !stripTags(trimCollapse(title)) 
     || !trimCollapse(bio) 
     || !stripTags(trimCollapse(email))
-    || !isSubmitting
+    || isSubmitting
     || error != "";
 
     return(
