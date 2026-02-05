@@ -1,4 +1,5 @@
 import { useState } from "react"
+import styles from "../styles/addProfileForm.module.css"
 
 const stripTags = (s) => String(s ?? "").replace(/<\/?[^>]+>/g, "");
 const trimCollapse = (s) => String(s ?? "").trim().replace(/\s+/g, " ");
@@ -58,19 +59,21 @@ const AddProfileForm = ({onAddProfile}) => {
                 setError("Image should be less than 1 MB")
                 setValues(pre => ({...pre, image:null}))
             }
+        } else {
+            setValues(pre => ({...pre, [name]: value}))
         }
-        setValues(pre => ({...pre, [name]: value}))
     }
     const disabled = !stripTags(trimCollapse(name)) 
     || !stripTags(trimCollapse(title)) 
-    || !stripTags(trimCollapse(bio)) 
+    || !trimCollapse(bio) 
     || !stripTags(trimCollapse(email))
     || !isSubmitting
-    || error;
+    || error != "";
 
     return(
 
-        <form onSubmit={handleSubmit} className="">
+        <form onSubmit={handleSubmit} className={styles["add-profile"]}>
+            <h2>Add a Profile</h2>
             <label htmlFor="name">Name</label>
             <input id="name" name="name" required value={name} onChange={handleChange}></input>
             <label htmlFor="title">Title</label>
