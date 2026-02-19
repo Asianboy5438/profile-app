@@ -12,6 +12,12 @@ import Filters from './Components/Filters';
 import AddProfileForm from './Components/AddProfileForm'
 import FetchedProfiles from './Components/FetchedProfiles'
 
+import { HashRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import FetchedProfilePage from "./pages/FetchedProfilePage";
+import AddProfilePage from "./pages/AddProfilePage";
+
 function App() {
 
 const [profiles, setProfiles] = useState([
@@ -56,7 +62,7 @@ const toggleStyles = () => {
 }
 
   return (
-    <>
+    <HashRouter>
       <div className={mode}>
         <NavBar />
         <Wrapper id="about">
@@ -68,39 +74,14 @@ const toggleStyles = () => {
             {clicked ? "Clicked" : "Click me"}
           </button>
         </Wrapper>
-        <Wrapper>
-          <FetchedProfiles />
-        </Wrapper>
-        <Wrapper id="add-profile">
-          <AddProfileForm onAddProfile={updateProfiles}/>
-        </Wrapper>
-        <Wrapper id="profile">
-          <Filters
-            titles={titles}
-            title={title}
-            name={name}
-            handleChange={handleChangeTitle}
-            handleSearch={handleSearch}
-            handleClick={handleClear}
-          />
-            <div className="grid">
-              {filteredProfiles.length > 0 ? (
-                filteredProfiles.map((profile) => (
-                  <Card
-                    key={profile.id}
-                    name={profile.name}
-                    title={profile.title}
-                    image={profile.image}
-                    mode = {mode}
-                  />
-                ))
-              ) : (
-                <p>No profiles selected.</p>
-              )}
-            </div>
-        </Wrapper>
+          <Routes>
+            <Route path="/" element={<HomePage profiles={profiles} handleChangeTitle={handleChangeTitle} handleSearch={handleSearch} handleClear={handleClear} title={title} name={name}/>} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/fetched-profiles" element={<FetchedProfilePage />} /> 
+            <Route path="/add-profile" element={<AddProfilePage updateProfiles={updateProfiles}/>} />
+          </Routes>
       </div>
-    </>
+    </HashRouter>
   )
 }
 
