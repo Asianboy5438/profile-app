@@ -1,4 +1,3 @@
-import Card from './Components/Card'
 import NavBar from './Components/NavBar'
 import AboutMe from './Components/AboutMe'
 import Wrapper from './Components/Wrapper'
@@ -8,15 +7,14 @@ import VG0 from './assets/VG0.jpg'
 import MA0 from './assets/MA0.jpg'
 import DV0 from './assets/DV0.jpg'
 import { useState } from "react";
-import Filters from './Components/Filters';
-import AddProfileForm from './Components/AddProfileForm'
-import FetchedProfiles from './Components/FetchedProfiles'
 
 import { HashRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import FetchedProfilePage from "./pages/FetchedProfilePage";
 import AddProfilePage from "./pages/AddProfilePage";
+import ProfileDetailPage from "./pages/ProfileDetailPage";
+import ProfileLayoutPage from "./pages/ProfileLayoutPage";
 
 function App() {
 
@@ -77,7 +75,9 @@ const toggleStyles = () => {
           <Routes>
             <Route path="/" element={<HomePage profiles={profiles} handleChangeTitle={handleChangeTitle} handleSearch={handleSearch} handleClear={handleClear} title={title} name={name}/>} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/fetched-profiles" element={<FetchedProfilePage />} /> 
+            <Route path="/fetched-profiles/profile" element={<ProfileLayoutPage />}>
+              <Route path=":id" element={<ProfileDetailPage/>}/> 
+            </Route>
             <Route path="/add-profile" element={<AddProfilePage updateProfiles={updateProfiles}/>} />
           </Routes>
       </div>
